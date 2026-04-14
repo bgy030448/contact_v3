@@ -10,17 +10,18 @@ import java.util.Scanner;
 public class ContactView {
     private final Scanner sc;
     private final ContactService contactService;
+
     public ContactView(Scanner sc, ContactService contactService) {
         this.sc = sc;
         this.contactService = contactService;
     }
 
-    public void run(){
-        while (true){
+    public void run() {
+        while (true) {
             System.out.println("1.추가  2.목록  3.수정  4.삭제  5.이름의 일부로 검색 -1:종료");
             int cmd = sc.nextInt();
-            switch (cmd){
-                case -1 :
+            switch (cmd) {
+                case -1:
                     return;
                 case 1:
                     create();
@@ -53,6 +54,10 @@ public class ContactView {
 
     private void delete() {
         System.out.println("[ContactView.delete()]");
+        System.out.println("삭제 아이디 : ");
+        Long deleteId = sc.nextLong();
+        // 서비스로 id 보내기
+        contactService.delete(deleteId);
     }
 
     private void readAll() {
@@ -70,7 +75,7 @@ public class ContactView {
         }
     }
 
-    private void create(){
+    private void create() {
         System.out.println("[ContactView.create()]");
         // 이름과 나이, 전화번호를 입력받아서
         // 서비스에 전달한다.

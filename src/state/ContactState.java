@@ -28,6 +28,6 @@ public class ContactState {
     }
 
     public void increaseId() {
-        nextId ++;
+        nextId++;
     }
 }
