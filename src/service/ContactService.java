@@ -17,7 +17,7 @@ public class ContactService {
 
     public void insert(String name, int age, String phone) {
         System.out.println("[ContactService.insert()]");
-        // Contact를 받은 데이터를 갖고 만들어요.
+        // Contact 를 받은 데이터를 갖고 만들어요.
         Long id = state.getNextId();
         Contact contact = new Contact(id, name, age, phone);
         System.out.println(contact);
@@ -26,9 +26,14 @@ public class ContactService {
         repository.save(id, contact);
         // 출력
         System.out.println("저장된 거 출력");
-        Map<Long, Contact> currentStore = state.getStore();
-        for (Long key : currentStore.keySet()) {
-            System.out.println(currentStore.get(key));
+        Map<Long, Contact> currStore = state.getStore();
+        for (Long key : currStore.keySet()) {
+            System.out.println(currStore.get(key));
         }
+    }
+
+    public Map<Long, Contact> findAll() {
+        System.out.println("[ContactService.findAll()]");
+        return repository.findAll();
     }
 }

@@ -5,7 +5,7 @@ import vo.Contact;
 import java.util.HashMap;
 import java.util.Map;
 
-// 연락처를 저장할 map 저장 공간과 id를 자동증가할 변수
+// 연락처를 저장할 map 저장공간과 id를 자동증가할 변수
 public class ContactState {
     // 연락처를 저장할 맵 선언
     private Map<Long, Contact> store = new HashMap<>();
@@ -28,6 +28,6 @@ public class ContactState {
     }
 
     public void increaseId() {
-        nextId++;
+        nextId ++;
     }
 }

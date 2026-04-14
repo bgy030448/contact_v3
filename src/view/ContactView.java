@@ -1,8 +1,10 @@
 package view;
 
-
 import service.ContactService;
+import vo.Contact;
 
+import java.util.Locale;
+import java.util.Map;
 import java.util.Scanner;
 
 public class ContactView {
@@ -42,25 +44,36 @@ public class ContactView {
     }
 
     private void search() {
-        System.out.println("[ContactView.search]");
-    }
-
-    private void delete() {
-        System.out.println("[ContactView.delete()]");
+        System.out.println("[ContactView.search()]");
     }
 
     private void update() {
         System.out.println("[ContactView.update()]");
     }
 
+    private void delete() {
+        System.out.println("[ContactView.delete()]");
+    }
+
     private void readAll() {
         System.out.println("[ContactView.readAll()]");
+        // 맵을 읽어와서 화면 출력
+        Map<Long, Contact> store = contactService.findAll();
+        // store 비어 있으면 없다고 출력한 후 종료
+        if (store.isEmpty()) {
+            System.out.println("저장된 자료가 없어요");
+            return;
+        }
+        // 출력
+        for (Long key : store.keySet()) {
+            System.out.println(store.get(key));
+        }
     }
 
     private void create(){
         System.out.println("[ContactView.create()]");
-        // 이름과 나이, 전화번호를 입력 받아서
-        //서비스에 전달한다.
+        // 이름과 나이, 전화번호를 입력받아서
+        // 서비스에 전달한다.
         String name;
         int age;
         String phone;
