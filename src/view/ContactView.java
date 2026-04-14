@@ -46,6 +46,17 @@ public class ContactView {
 
     private void search() {
         System.out.println("[ContactView.search()]");
+        System.out.println("검색어(이름) : ");
+        String keyword = sc.next();
+        Map<Long, Contact> result = contactService.search(keyword);
+        // 검색결과 출력
+        if (result.isEmpty()) {
+            System.out.println("검색 결과가 없어요");
+        } else {
+            for (Long key : result.keySet()) {
+                System.out.println(result.get(key));
+            }
+        }
     }
 
     private void update() {
